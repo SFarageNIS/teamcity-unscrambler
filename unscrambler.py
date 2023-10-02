@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from Crypto.Cipher.DES3 import DES3Cipher
+from Crypto.Cipher import DES3
 from codecs import decode
 from sys import argv
 
@@ -13,7 +13,7 @@ key = bytes(key_byte_array)
 des3_ciphertext = ciphertext.lstrip('zxx')
 des3_cipherbytes = decode(des3_ciphertext, 'hex')
 
-cipher = DES3Cipher(key)
+cipher = DES3.new(key, DES3.MODE_ECB)
 
 plaintext_padded = cipher.decrypt(des3_cipherbytes)
 
